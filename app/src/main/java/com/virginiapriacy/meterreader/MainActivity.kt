@@ -16,10 +16,14 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import com.virginiapriacy.androidusb.AndroidUsbInterface
 import com.virginiapriacy.smartmeterplugin.SmartMeterPlugin
-import com.virginiaprivacy.androidusb.AndroidUsbInterface
 import com.virginiaprivacy.drivers.sdr.RTLDevice
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import org.jetbrains.kotlinx.multik.api.EngineType
+import org.jetbrains.kotlinx.multik.api.JvmEngineType
+import org.jetbrains.kotlinx.multik.api.NativeEngineType
+import org.jetbrains.kotlinx.multik.api.mk
 
 @ExperimentalUnsignedTypes
 @ExperimentalCoroutinesApi
@@ -80,6 +84,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        mk.setEngine(JvmEngineType)
         super.onCreate(savedInstanceState)
         context = this
         registerReceiver(usbReceiver, filter)
